@@ -1,0 +1,41 @@
+bloques ::= bloque bloques
+bloques ::= ''
+
+bloque ::= title
+bloque ::= textstyle
+bloque ::= url
+bloque ::= table
+bloque ::= img
+bloque ::= comentario
+bloque ::= enumerate 
+
+title ::= header { textstyle }
+header ::= \h1
+header ::= \h2
+header ::= \h3
+
+textstyle ::= text
+textstyle ::= \bf { bloques }
+textstyle ::= \it { bloques }
+textstyle ::= \un { bloques }
+
+url ::= \link { textstyle }
+
+comentario ::= \cmt { text }
+
+
+enumerate ::= \list { elements  } 
+elements  ::= \item { bloques } elements  
+elements  ::= textstyle elements
+elements  ::= comentario elements
+elements  ::= ''
+
+
+table ::= \tbl { cell }
+cell ::= textstyle cell'
+cell ::= ''
+cell' ::= && cell
+cell' ::= || cell
+cell' ::=  ''
+
+img ::= \pic { text }
